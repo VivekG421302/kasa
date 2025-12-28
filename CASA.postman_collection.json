@@ -1,0 +1,284 @@
+{
+	"info": {
+		"_postman_id": "113b135f-584d-46d1-b8a3-a571ccf0b74d",
+		"name": "CASA",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "44810762",
+		"_collection_link": "https://vivekg-7613244.postman.co/workspace/VIVEKG's-Workspace~01c4f243-5b48-49be-8edf-10e84969b9bc/collection/44810762-113b135f-584d-46d1-b8a3-a571ccf0b74d?action=share&source=collection_link&creator=44810762"
+	},
+	"item": [
+		{
+			"name": "Photos",
+			"item": [
+				{
+					"name": "Get Image",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Profiles",
+			"item": [
+				{
+					"name": "Create Profile",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"alice\",\r\n    \"displayName\": \"Alice Smith\",\r\n    \"email\": \"alice@example.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/profiles",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"profiles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Profile",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/profiles/2",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"profiles",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Profiles",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/profiles",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"profiles"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "- **POST** `/api/profiles` → create user\n    \n- **GET** `/api/profiles` → list users\n    \n- **GET** `/api/profiles/{id}` → get profile by ID"
+		},
+		{
+			"name": "Chat Rooms",
+			"item": [
+				{
+					"name": "Create Room",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/chatrooms?user1Id=1&user2Id=2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"chatrooms"
+							],
+							"query": [
+								{
+									"key": "user1Id",
+									"value": "1"
+								},
+								{
+									"key": "user2Id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Room",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "List Rooms",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			],
+			"description": "- **POST** `/api/chatrooms?user1Id=1&user2Id=2` → create chatroom\n    \n- **GET** `/api/chatrooms/user/{userId}` → list chatrooms for a user"
+		},
+		{
+			"name": "Messages",
+			"item": [
+				{
+					"name": "Media",
+					"item": [
+						{
+							"name": "New Request",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/contents/file/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"contents",
+										"file",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Send Message",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/contents/text?senderId=1&chatRoomId=1&messageText=Hello Alice!",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"contents",
+								"text"
+							],
+							"query": [
+								{
+									"key": "senderId",
+									"value": "1"
+								},
+								{
+									"key": "chatRoomId",
+									"value": "1"
+								},
+								{
+									"key": "messageText",
+									"value": "Hello Alice!"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Receive Message",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/contents/chatroom/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"contents",
+								"chatroom",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Send Media",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "senderId",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "chatRoomId",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/QCC/Desktop/database Setup.txt"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/contents/media",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"contents",
+								"media"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "- **POST** `/api/messages?senderId=1&chatRoomId=1&messageText=Hello` → send message\n    \n- **GET** `/api/messages/chatroom/{chatRoomId}` → get chatroom messages"
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "",
+			"type": "default"
+		}
+	]
+}
