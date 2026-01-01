@@ -1,33 +1,38 @@
 package com.chat.kasa.model;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 
-import java.util.List;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "chat_rooms")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
-@AllArgsConstructor
-@Builder
 public class ChatRoom {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // User1
-    @ManyToOne
-    @JoinColumn(name = "user1_id", nullable = false)
-    private Profile user1;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_a_id", nullable = false)
+    private User userA;
 
-    // User2
-    @ManyToOne
-    @JoinColumn(name = "user2_id", nullable = false)
-    private Profile user2;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_b_id", nullable = false)
+    private User userB;
 
-//    // Messages sent in this chatroom
-//    @OneToMany(mappedBy = "chatRoom", cascade = CascadeType.ALL)
-//    private List<Content> messages;
+    @CreationTimestamp
+    @Column(nullable = false, updatable = false)
+    private LocalDateTime createdAt;
+
+    public ChatRoom(User userA, User userB) {
+        this.userA = userA;
+        this.userB = userB;
+    }
 }

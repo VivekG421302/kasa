@@ -1,18 +1,13 @@
 package com.chat.kasa.service;
 
 import com.chat.kasa.model.ChatRoom;
-import com.chat.kasa.model.Profile;
+import com.chat.kasa.model.User;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface ChatRoomService {
-
-    ChatRoom createChatRoom(Profile user1, Profile user2);
-
-    Optional<ChatRoom> getChatRoom(Long id);
-
-    Optional<ChatRoom> getChatRoom(Profile user1, Profile user2);
-
-    List<ChatRoom> getAllChatRoomsForUser(Profile user);
+    ChatRoom findOrCreateChatRoom(User user1, User user2);
+    Optional<ChatRoom> findById(Long id);
+    List<ChatRoom> findAll();
 }
