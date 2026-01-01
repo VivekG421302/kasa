@@ -1,0 +1,47 @@
+spring.application.name=kasa
+
+## Server Config
+#server.port=8081
+#
+#server.address=192.168.1.226
+#server.address=192.168.1.226
+
+# Database Configuration
+spring.datasource.url=jdbc:mysql://localhost:3306/kasa_db?useSSL=false&serverTimezone=UTC
+
+spring.datasource.username=root
+spring.datasource.password=root
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+
+# JPA (Hibernate) Configuration
+spring.jpa.database-platform=org.hibernate.dialect.MySQLDialect
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+
+# Hibernate DDL Auto (Update DB schema automatically)
+spring.jpa.hibernate.ddl-auto=update
+
+# Telegram Bot Configuration
+BOT_TOKEN=8135993773:AAEHtoITVdrGU1l_SU-HBvmSKpMfY1F5FCM
+CHANNEL_ID=-1002889947951
+#https://api.telegram.org/bot8135993773:AAEHtoITVdrGU1l_SU-HBvmSKpMfY1F5FCM/setWebhook?url=https://pronominally-thistlelike-leroy.ngrok-free.dev/telegram/webhook
+
+
+# Upload Directory and Segment Duration
+video.upload.dir=C:/video_uploads
+video.segment.max-size-mb=15
+
+# Accept large file uploads
+spring.servlet.multipart.max-file-size=5GB
+spring.servlet.multipart.max-request-size=5GB
+
+# Optional: Increase request timeout
+# 20 minutes timeout
+#server.tomcat.connection-timeout=20m
+
+# Architecture
+#User ? Frontend ? Backend
+#Backend ? Telegram Bot ? Telegram Channel
+#Telegram ? Webhook ? Backend
+#Backend ? DB (store metadata)
+
